@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - CalPay Authentication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <header class="top-header">
+        <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="Assets/images/calbank-logo.png" alt="CalBank">
+            </a>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-outline" style="padding: 6px 16px;" onclick="window.location.href='#'">Sign In</button>
+            <button class="btn" style="background: transparent; border: none; color: #111827; font-weight: 600; padding: 6px 16px;">Help</button>
+        </div>
+    </header>
+
+    <div class="auth-wrapper">
+        <!-- Sidebar Area (Left) -->
+        <div class="auth-sidebar">
+            <div class="auth-steps-container">
+                <div class="auth-step active">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #f97316;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>Identification</h4>
+                        <p>Please provide your contact info and Ghana Card Number</p>
+                    </div>
+                </div>
+
+                <div class="auth-step">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #94a3b8;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>Photo Verification</h4>
+                        <p>Upload company certification documents</p>
+                    </div>
+                </div>
+
+                <div class="auth-step">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #94a3b8;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>OTP Verification</h4>
+                        <p>Final step to begin your seamless payments</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-sidebar-footer">
+                &copy; CalBank PLC
+            </div>
+        </div>
+
+        <!-- Main Content Area (Right) -->
+        <div class="auth-main">
+            <div class="auth-content-box">
+                <h1 class="auth-title">Identification</h1>
+                <p class="auth-subtitle">Complete the form below and enter your Ghana Card Number for verification</p>
+
+                <form class="auth-form" onsubmit="event.preventDefault(); window.location.href='register-step2.html';">
+                    <div class="form-group mb-24">
+                        <label>Phone Number</label>
+                        <div class="phone-input-group">
+                            <div class="country-flag-select">
+                                <img src="https://flagcdn.com/w40/gh.png" alt="Ghana Flag">
+                            </div>
+                            <input type="text" class="form-control phone-input" placeholder="+233 24 507 5219" />
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-24">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control auth-input" />
+                    </div>
+
+                    <div class="form-group mb-24">
+                        <label>Ghana Card Number</label>
+                        <input type="text" class="form-control auth-input" placeholder="GHA-XXXXXXXX-X" />
+                    </div>
+
+                    <div class="auth-notice">
+                        <strong>Note:</strong> You will be required to take a picture to complete the verification process. Kindly make sure your device camera permission is allowed for this action.
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block auth-btn">Continue</button>
+                    
+                    <div class="auth-link-text">
+                        Already have an account? <a href="#">Sign In</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="auth-main-footer">
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
