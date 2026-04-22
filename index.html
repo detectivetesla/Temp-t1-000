@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalPay - CalBank Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Header Navigation -->
+    <header class="top-header">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <img src="Assets/images/calbank-logo.png" alt="CalBank">
+            </a>
+        </div>
+
+        <div class="header-actions">
+            <button class="btn btn-outline" id="registerBtn">Register</button>
+            <button class="btn btn-primary" id="signinBtn">Sign In</button>
+        </div>
+    </header>
+
+    <!-- Main Application Container -->
+    <div class="app-container">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- Main Links -->
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-view="home">
+                        <i class="fa-solid fa-house nav-icon"></i>
+                        <span>Home</span>
+                    </li>
+                    <li class="nav-item" data-view="transactions">
+                        <i class="fa-solid fa-arrow-right-arrow-left nav-icon"></i>
+                        <span>Transactions</span>
+                    </li>
+                    <li class="nav-item" data-view="merchants">
+                        <i class="fa-solid fa-store nav-icon"></i>
+                        <span>Merchants</span>
+                    </li>
+                    <li class="nav-item" data-view="virtual">
+                        <i class="fa-solid fa-cart-shopping nav-icon"></i>
+                        <span>Virtual Shops</span>
+                    </li>
+                </ul>
+
+                <!-- Products Section -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Products & Services</h4>
+                    <ul class="nav-menu">
+                        <li class="nav-item" data-view="airtime">
+                            <i class="fa-solid fa-user nav-icon"></i>
+                            <span>Buy Airtime</span>
+                        </li>
+                        <li class="nav-item" data-view="bills">
+                            <i class="fa-solid fa-file-invoice nav-icon"></i>
+                            <span>Pay Bills</span>
+                        </li>
+                        <li class="nav-item" data-view="data">
+                            <i class="fa-solid fa-wifi nav-icon"></i>
+                            <span>Buy Internet Data</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Info Section -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Information</h4>
+                    <ul class="nav-menu">
+                        <li class="nav-item" data-view="about">
+                            <i class="fa-solid fa-circle-info nav-icon"></i>
+                            <span>About CalPay</span>
+                        </li>
+                        <li class="nav-item" data-view="help">
+                            <i class="fa-solid fa-circle-question nav-icon"></i>
+                            <span>Help Center</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Download App Section -->
+            <div class="app-download">
+                <p class="download-text">Download CalPay</p>
+                <a href="#" class="store-btn">
+                    <img src="Assets/images/appstore-badge.png" class="badge-app-store" alt="Download on the App Store">
+                </a>
+                <a href="#" class="store-btn">
+                    <img src="Assets/images/googleplay-badge.png" class="badge-play-store" alt="Get it on Google Play">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Yellow Banner -->
+            <div class="welcome-banner">
+                <h1 class="banner-title">Welcome to CalPay</h1>
+                
+                <div class="banner-controls">
+                    <!-- Toggle Switch -->
+                    <div class="toggle-switch">
+                        <button class="toggle-btn active" id="toggleMerchants">Merchants</button>
+                        <button class="toggle-btn" id="toggleVirtual">Virtual Shops</button>
+                    </div>
+
+                    <!-- Category Dropdown -->
+                    <div class="select-wrapper">
+                        <select class="category-select" id="categoryFilter">
+                            <option value="all">Category</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="education">Education</option>
+                            <option value="government">Government</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="insurance">Insurance</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="search-wrapper">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search Merchant">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merchant Grid Area -->
+            <div class="content-wrapper">
+                <div class="merchant-grid" id="merchantGrid">
+                    <!-- Cards will be populated dynamically via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-left">
+                    &copy; CalBank PLC
+                </div>
+                <div class="footer-right">
+                    <a href="#">Terms and Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="paymentModalOverlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-merchant-info">
+                    <div class="modal-logo" id="modalLogo">
+                        <!-- Dynamic Logo will go here -->
+                    </div>
+                    <div class="modal-merchant-name" id="modalMerchantName">
+                        <!-- Dynamic Name will go here -->
+                    </div>
+                </div>
+                <button class="modal-close" id="modalClose">
+                    <i class="fa-regular fa-circle-xmark"></i> Close
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-instruction">Kindly provide the following details to make payment</p>
+                
+                <div class="form-group">
+                    <label>Payment ID <span class="label-hint">(Mobile number or any ID received from merchant)</span></label>
+                    <input type="text" class="form-control" />
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount <span class="label-hint">(Max Amt - 20000)</span></label>
+                        <input type="text" class="form-control" value="GHS " />
+                    </div>
+                    <div class="form-group">
+                        <label>Who is paying</label>
+                        <div class="select-wrapper-custom">
+                            <select class="form-control">
+                                <option>Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary btn-block">Sign in to proceed</button>
+                    <button class="btn btn-outline btn-block">Pay as a guest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

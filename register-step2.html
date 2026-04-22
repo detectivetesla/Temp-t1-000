@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Verification - CalPay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <header class="top-header">
+        <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="Assets/images/calbank-logo.png" alt="CalBank">
+            </a>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-outline" style="padding: 6px 16px;" onclick="window.location.href='#'">Sign In</button>
+            <button class="btn" style="background: transparent; border: none; color: #111827; font-weight: 600; padding: 6px 16px;">Help</button>
+        </div>
+    </header>
+
+    <div class="auth-wrapper">
+        <!-- Sidebar Area (Left) -->
+        <div class="auth-sidebar">
+            <div class="auth-steps-container">
+                <div class="auth-step active">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #f97316;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>Identification</h4>
+                        <p>Provide your contact info and Ghana Card Number</p>
+                    </div>
+                </div>
+
+                <div class="auth-step active">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #f97316;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>Photo Verification</h4>
+                        <p>Upload company certification documents</p>
+                    </div>
+                </div>
+
+                <div class="auth-step">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check" style="color: #94a3b8;"></i>
+                    </div>
+                    <div class="step-content">
+                        <h4>OTP Verification</h4>
+                        <p>Final step to begin your seamless payments</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-sidebar-footer">
+                &copy; CalBank PLC
+            </div>
+        </div>
+
+        <!-- Main Content Area (Right) -->
+        <div class="auth-main">
+            <div class="auth-content-box" style="max-width: 580px;" id="captureView">
+                <h1 class="auth-title text-center">Photo Verification</h1>
+                <p class="auth-subtitle text-center">Verifying your identity with a photo helps us build a trusted community <a href="#" style="color: #f97316; font-weight: 600; text-decoration: none;">Instructions</a></p>
+
+                <div class="photo-capture-container" id="cameraContainer">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=400&q=80" alt="Face Preview" class="photo-preview" crossorigin="anonymous" id="photoPreviewImg" />
+                    <!-- Faux Camera View Layer -->
+                    <div id="cameraVideo" style="display: none; width: 100%; height: 100%; background: #e2e8f0; position: relative;">
+                        <!-- Faked crosshair overlay -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 2px dashed #94a3b8; width: 250px; height: 350px; border-radius: 50%;"></div>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=400&q=80" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" />
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block auth-btn mt-24" id="captureBtn">Capture</button>
+            </div>
+
+            <!-- Results View -->
+            <div class="auth-content-box" style="max-width: 580px; display: none;" id="resultsView">
+                <br />
+                <h1 class="auth-title text-center" style="font-size: 26px; margin-bottom: 32px; font-weight: 800;">Results</h1>
+                
+                <div class="photo-capture-container">
+                    <img src="" alt="Captured Face" class="photo-preview" id="capturedResultImg" />
+                </div>
+
+                <div class="text-center mt-24" style="font-size: 14px; color: #64748b; margin-bottom: 24px;">
+                    Does this photo clearly show your face? <a href="#" id="retakeBtn" style="color: #f97316; font-weight: 600; text-decoration: none;">Retake Photo</a>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block auth-btn" onclick="window.location.href='register-step3.html'">Verify Again</button>
+            </div>
+            
+            <div class="auth-main-footer">
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions Modal Overlay -->
+    <div class="modal-overlay" id="instructionsModalOverlay">
+        <div class="modal-container" style="max-width: 500px; border-radius: 16px; padding: 48px; box-sizing: border-box;">
+            <div class="text-center" style="margin-bottom: 32px;">
+                <div style="position: relative; display: inline-block;">
+                    <!-- Frame brackets -->
+                    <div style="position: absolute; top: 0; left: 0; width: 24px; height: 24px; border-top: 3px solid #ffc107; border-left: 3px solid #ffc107; border-top-left-radius: 12px;"></div>
+                    <div style="position: absolute; top: 0; right: 0; width: 24px; height: 24px; border-top: 3px solid #ffc107; border-right: 3px solid #ffc107; border-top-right-radius: 12px;"></div>
+                    <div style="position: absolute; bottom: 0; left: 0; width: 24px; height: 24px; border-bottom: 3px solid #ffc107; border-left: 3px solid #ffc107; border-bottom-left-radius: 12px;"></div>
+                    <div style="position: absolute; bottom: 0; right: 0; width: 24px; height: 24px; border-bottom: 3px solid #ffc107; border-right: 3px solid #ffc107; border-bottom-right-radius: 12px;"></div>
+                    
+                    <img src="https://blog.playstation.com/tachyon/2013/10/psn-avatar-1.png" alt="Avatar" style="width: 100px; border-radius: 50%; padding: 12px;" />
+                </div>
+            </div>
+            <h2 class="text-center" style="font-size: 26px; font-weight: 700; margin-bottom: 32px; color: #000;">Picture Capture Instructions</h2>
+            
+            <ol class="instructions-list">
+                <li>Hold your phone steady.</li>
+                <li>Position your face within the frame and ensure there's enough light for a clear photo.</li>
+                <li>Avoid wearing hats or sunglasses.</li>
+                <li>Tap the button below to take the photo.</li>
+            </ol>
+
+            <button type="button" class="btn btn-primary btn-block auth-btn mt-24" style="border-radius: 12px; font-size: 16px; padding: 16px;" id="okayBtn">Okay</button>
+        </div>
+    </div>
+
+    <script>
+        let isCameraMode = false;
+        
+        const captureBtn = document.getElementById('captureBtn');
+        const instructionsOverlay = document.getElementById('instructionsModalOverlay');
+        const photoPreviewImg = document.getElementById('photoPreviewImg');
+        const cameraVideo = document.getElementById('cameraVideo');
+        const capturedResultImg = document.getElementById('capturedResultImg');
+        
+        const captureView = document.getElementById('captureView');
+        const resultsView = document.getElementById('resultsView');
+
+        captureBtn.addEventListener('click', () => {
+            if (!isCameraMode) {
+                // Show instructions
+                instructionsOverlay.classList.add('show');
+            } else {
+                // Simulate Shutter Snap
+                capturedResultImg.src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=400&q=80";
+                
+                // Return logic state properties dynamically
+                isCameraMode = false;
+                cameraVideo.style.display = 'none';
+                photoPreviewImg.style.display = 'block';
+                captureBtn.textContent = 'Capture';
+                
+                // Execute screen transfer mimicking a snapshot process
+                captureView.style.display = 'none';
+                resultsView.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        });
+
+        document.getElementById('okayBtn').addEventListener('click', () => {
+            instructionsOverlay.classList.remove('show');
+            
+            // Just switch directly into simulated camera visuals without asking tracking permissions
+            photoPreviewImg.style.display = 'none';
+            cameraVideo.style.display = 'block';
+            
+            isCameraMode = true;
+            captureBtn.textContent = 'Take Photo';
+        });
+
+        document.getElementById('retakeBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            resultsView.style.display = 'none';
+            captureView.style.display = 'block';
+            
+            // Auto invoke instruction bypass flow triggering cam up implicitly again 
+            captureBtn.click();
+        });
+    </script>
+</body>
+</html>
